@@ -9,6 +9,10 @@ public class Field extends JFrame implements MouseListener {
     private int sideTileCount = 8;
     private Environment[][]figures;
     private Environment selected;
+
+    /*
+        Method, creating and constructing the field(board)
+     */
     public Field (){
 
         this.figures = new Environment[sideTileCount][sideTileCount];
@@ -37,6 +41,10 @@ public class Field extends JFrame implements MouseListener {
         this.addMouseListener(this);
     }
 
+    /*
+        Method, resposible for moving the player around the field
+        @param mouseEvent listener for action
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         int col = this.getFieldDimensionsBasedOnCoordinates(mouseEvent.getX());
@@ -62,30 +70,40 @@ public class Field extends JFrame implements MouseListener {
             }
         }
         if (this.hasGPS(row, col)) {
-            this.selected = this.getGPS(row, col);
+            this.selected = this.getFigurePosition(row, col);
         }
     }
-
+    /*
+        Empty necessary method
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
 
     }
-
+    /*
+            Empty necessary method
+    */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
 
     }
-
+    /*
+            Empty necessary method
+    */
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
 
     }
-
+    /*
+            Empty necessary method
+    */
     @Override
     public void mouseExited(MouseEvent mouseEvent) {
 
     }
-
+    /*
+        Method respnsible for moving the player and asaigning its ne coordinates
+     */
     private void movePlayer(int col, int row, Environment gps) {
         int startingRow = gps.getRow();
         int startingCol = gps.getCol();
@@ -96,43 +114,59 @@ public class Field extends JFrame implements MouseListener {
         this.figures[startingRow][startingCol] = null;
         this.selected = null;
     }
-
+    /*
+        Method setting the color of the empty spaces on the field(board)
+     */
     private Color getTileColor() {
 
         return Color.BLACK;
 
     }
-
+    /*
+        Method rendering the field(board)
+     */
     public void renderField(Graphics g, int row, int col){
         Color tileColor = this.getTileColor();
         Tile tile = new Tile(row, col, tileColor);
         tile.render(g);
     }
-
-    private Environment getGPS(int row, int col){
+    /*
+        Method responsible for getting the coordinates of the figures
+     */
+    private Environment getFigurePosition(int row, int col){
         return this.figures[row][col];
     }
-
+    /*
+        Method checking if the GPS is on the field
+     */
     private boolean hasGPS(int row, int col){
-        return this.getGPS(row, col) != null;
+        return this.getFigurePosition(row, col) != null;
     }
-
-    private Environment getImpassableTile(int row, int col){
-        return this.figures[row][col];
+    /*
+        Method checking if the GPSCoordinates
+     */
+    private boolean hasGPSCoordinates(int row, int col){
+        return this.getFigurePosition(row, col) != null;
     }
-
+    /*
+        Method checking if there are ImpassibleTile-s on the field
+     */
     private boolean hasImpassableTile(int row, int col){
-        return this.getImpassableTile(row, col) != null;
+        return this.getFigurePosition(row, col) != null;
     }
-
+    /*
+        Method rendering the PayerTile(GPS)
+     */
     public void renderGPS(Graphics g, int row, int col) {
 
         if (this.hasGPS(row, col)) {
-            Environment gps = this.getGPS(row, col);
+            Environment gps = this.getFigurePosition(row, col);
             gps.render(g);
         }
     }
-
+    /*
+        Method painting everything
+     */
     public void paint(Graphics g) {
 
         super.paint(g);
@@ -146,15 +180,14 @@ public class Field extends JFrame implements MouseListener {
         }
     }
 
+    /*
+        Method getting the coordinates for moving the player and placing the Environment
+     */
     private int getFieldDimensionsBasedOnCoordinates(int coordinates){
         return coordinates / Tile.TILE_SIZE;
     }
 
-    private Environment getGPSCoordinates(int row, int col){
-        return this.figures[row][col];
-    }
-
-    private boolean isBabaYagaHere(int row, int col){
-        return this.getImpassableTile(row, col) != null;
-    }
+    //private boolean isBabaYagaHere(int row, int col){
+    //    return this.getImpassableTile(row, col) != null;
+    //}
 }

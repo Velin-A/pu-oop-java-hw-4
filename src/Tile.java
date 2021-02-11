@@ -8,12 +8,20 @@ public class Tile{
     private int col;
     private Color color;
 
+    /*
+        Constructor for Tile
+        @param row row coordinate
+        @param col col coordinate
+        @param color tile color
+     */
     public Tile(int row, int col, Color color){
         this.row      = row;
         this.col      = col;
         this.color    = color;
     }
-
+    /*
+        Method rendering the tiles
+     */
     public void render(Graphics g){
 
         int tileX    = this.col * TILE_SIZE;

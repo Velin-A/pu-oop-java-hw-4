@@ -2,6 +2,10 @@ import javax.swing.*;
 
 public class Modal extends JDialog {
 
+    /*
+        Constructor for the Modal window, giving feedback to the user
+     */
+
     public Modal( JFrame parent, String title, String message){
         super(parent, title, true);
 
@@ -16,7 +20,9 @@ public class Modal extends JDialog {
         setVisible(true);
 
     }
-
+    /*
+        Method rendering the Modal window
+     */
     public static void render(JFrame parent, String title, String message) {
         new Modal(parent, title,message);
     }
