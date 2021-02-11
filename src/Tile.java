@@ -2,7 +2,8 @@ import java.awt.*;
 
 public class Tile{
 
-    final private static int TILE_SIZE = 50;
+    public static final int TILE_SIZE = 50;
+    public static final int BORDER_OFFSET = 1;
     private int row;
     private int col;
     private Color color;
@@ -19,7 +20,7 @@ public class Tile{
         int tileY    = this.row * TILE_SIZE;
 
         g.setColor(this.color);
-        g.fillRect(tileX, tileY, TILE_SIZE,  TILE_SIZE);
+        g.drawRect(tileX, tileY, TILE_SIZE-BORDER_OFFSET,  TILE_SIZE-BORDER_OFFSET);
     }
 
 }

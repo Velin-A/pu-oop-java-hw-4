@@ -1,17 +1,13 @@
+package Environment;
+
 import java.awt.*;
-import java.util.Random;
 
-public class GPS {
-    private int row;
-    private int col;
-    private Color color;
-    private int size = 50;
+public class Environment {
 
-    public GPS (int row, int col, Color color){
-        this.row = row;
-        this.col = col;
-        this.color = color;
-    }
+    protected int row;
+    protected int col;
+    protected Color color;
+    protected int size = 50;
 
     public int getRow() {
         return row;
@@ -19,6 +15,10 @@ public class GPS {
 
     public int getCol() {
         return col;
+    }
+
+    public boolean isMoveValid(int moveRow, int moveCol){
+        return false;
     }
 
     public void render(Graphics g){
@@ -33,5 +33,9 @@ public class GPS {
     public void move (int row, int col){
         this.row = row;
         this.col = col;
+    }
+
+    public boolean isBabaYagaHere(int row, int col){
+        return false;
     }
 }
