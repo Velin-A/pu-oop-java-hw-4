@@ -8,12 +8,17 @@ public class GPS {
     private int size = 50;
 
     public GPS (int row, int col, Color color){
-        //Random rand = new Random();
-        //this.row = rand.nextInt(2);
-        this.row = 7;
-        //this.col   = rand.nextInt(2);
-        this.col = 0;
+        this.row = row;
+        this.col = col;
         this.color = color;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
     }
 
     public void render(Graphics g){
@@ -23,5 +28,10 @@ public class GPS {
 
         g.setColor(this.color);
         g.fillRect(X, Y, size, size);
+    }
+
+    public void move (int row, int col){
+        this.row = row;
+        this.col = col;
     }
 }

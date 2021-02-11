@@ -7,10 +7,7 @@ public class GPSCoordinates {
     private int size = 50;
 
     public GPSCoordinates (int row, int col, Color color){
-        //Random rand = new Random();
-        //this.row = rand.nextInt(2);
         this.row = 7;
-        //this.col   = rand.nextInt(2);
         this.col = 0;
         this.color = color;
     }
